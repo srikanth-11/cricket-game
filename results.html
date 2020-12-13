@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GAME RESULT</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    />
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <link rel="shortcut icon" href="1.png" />
+  </head>
+  <body class="bg-dark text-primary">
+    <div class="container mt-4">
+      <div class="row">
+        <div class="col-lg text-center">
+          <p class="h1">My Cricket</p>
+          <hr style="border: 2px solid dodgerblue" />
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-md-5 text-white text-center">
+          <p class="h3 bg-primary rounded text-center" id="result"></p>
+          <p class="h3 bg-primary rounded text-center" id="mom"></p>
+          <button class="btn btn-primary" type="button" onclick="newMatch()">
+            New Match
+          </button>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    let url = new URL(window.location.href);
+    let result = url.searchParams.get("result");
+    let mom = JSON.parse(url.searchParams.get("mom"));
+    document.getElementById("result").innerText = result;
+    document.getElementById(
+      "mom"
+    ).innerHTML = `<p>Man Of The Match Is :</p><p>${mom.name}</p><p>of ${mom.team}</p><p>score: ${mom.score}</p>`;
+    function newMatch() {
+      window.location.href = "index.html";
+    }
+  </script>
+</html>
